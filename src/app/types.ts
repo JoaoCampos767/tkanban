@@ -1,14 +1,10 @@
-export interface Task {
-    id: string;
-    content: string;
+export interface TaskType {
+  id: string;
+  name: string;
+  columnId: string;
 }
 
-export interface Column {
-    id: string;
-    title: string;
-    tasks: Task[];
-}
-
-export interface KanbanState {
-    columns: Column[];
+export interface ColumnType {
+  id: string;
+  name: string;
 }

@@ -1,5 +1,5 @@
-import KanbanBoard from "@/app/kanban/page";
+import Kanban from "./kanban/page";
 
 export default function Home() {
-  return <KanbanBoard />
+  return <Kanban />;
 }
