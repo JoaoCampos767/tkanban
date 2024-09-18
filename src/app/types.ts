@@ -1,10 +1,12 @@
-export interface TaskType {
-  id: string;
-  name: string;
-  columnId: string;
-}
+import { UniqueIdentifier } from "@dnd-kit/core";
 
-export interface ColumnType {
-  id: string;
+export type ColumnType = {
+  id: UniqueIdentifier;
   name: string;
-}
+};
+
+export type TaskType = {
+  id: UniqueIdentifier;
+  name: string;
+  columnId: UniqueIdentifier;
+};

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import Column from "@/components/kanban/column";
 import { ColumnType, TaskType } from "@/app/types";
 import { Button } from "@/components/ui/button";
@@ -40,18 +40,22 @@ const Kanban: React.FC = () => {
     setColumns([...columns, newColumn]);
   };
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
+
+    if (!over) return;
+
     const taskId = active.id;
-    const newColumnId = over?.id;
+    const newColumnId = over.id;
 
-    if (!newColumnId) return;
-
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, columnId: newColumnId } : task
-      )
-    );
+    if (active.data.current?.type === "TASK") {
+      setTasks((prevTasks: TaskType[]) =>
+        prevTasks.map((task: TaskType) =>
+          task.id === taskId ? { ...task, columnId: newColumnId } : task
+        )
+      );
+    }
+    // Adicione a lógica para mover as colunas, se necessário
   };
 
   return (

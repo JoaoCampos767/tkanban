@@ -10,7 +10,7 @@ interface TaskProps {
   task: TaskType;
 }
 
-const Task: React.FC<TaskProps> = ({ task, id }) => {
+const Task: React.FC<TaskProps> = ({ task }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: task.id,
   });

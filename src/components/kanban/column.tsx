@@ -40,14 +40,14 @@ const Column: React.FC<ColumnProps> = ({
 
   const handleAddTask = () => {
     if (newTaskName.trim()) {
-      addTask(column.id, newTaskName);
+      addTask(column.id.toString(), newTaskName);
       setNewTaskName("");
     }
   };
 
   const handleTitleChange = () => {
     setEditingTitle(false);
-    updateColumnName(column.id, newColumnName);
+    updateColumnName(column.id.toString(), newColumnName);
   };
 
   const style = {
@@ -85,7 +85,7 @@ const Column: React.FC<ColumnProps> = ({
       )}
 
       {tasks.map((task) => (
-        <Task key={task.id} id={task.id} task={task} />
+        <Task key={task.id} id={task.id.toString()} task={task} />
       ))}
       <div className="flex gap-2 mt-4">
         <Input
